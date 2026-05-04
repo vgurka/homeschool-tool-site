@@ -1,19 +1,275 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Homeschool Tool</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Texas Homeschool Tool</title>
+
   <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
-      font-family: Arial;
-      text-align: center;
-      padding: 50px;
-      background: #f7f7f7;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: #ffffff;
+      background:
+        radial-gradient(circle at top left, rgba(96, 165, 250, 0.45), transparent 35%),
+        linear-gradient(135deg, #0f3c68 0%, #1262a3 45%, #38bdf8 100%);
+      min-height: 100vh;
     }
+
+    .page {
+      width: min(1120px, 92%);
+      margin: 0 auto;
+      padding: 32px 0 56px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 72px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .brand img {
+      width: 54px;
+      height: 54px;
+      object-fit: contain;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.12);
+      padding: 6px;
+    }
+
+    .badge {
+      padding: 8px 14px;
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(12px);
+      font-size: 14px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 56px;
+      align-items: center;
+    }
+
     h1 {
-      font-size: 2.5em;
+      font-size: clamp(42px, 7vw, 76px);
+      line-height: 0.95;
+      letter-spacing: -0.07em;
+      margin-bottom: 24px;
     }
-    p {
-      font-size: 1.2em;
-      color: #555;
+
+    .lead {
+      font-size: clamp(18px, 2vw, 22px);
+      line-height: 1.55;
+      color: rgba(255,255,255,0.86);
+      max-width: 620px;
+      margin-bottom: 30px;
+    }
+
+    .waitlist-card {
+      display: flex;
+      gap: 10px;
+      max-width: 560px;
+      padding: 8px;
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.24);
+      border-radius: 20px;
+      backdrop-filter: blur(14px);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.18);
+    }
+
+    input {
+      flex: 1;
+      border: none;
+      outline: none;
+      border-radius: 14px;
+      padding: 16px 18px;
+      font-size: 16px;
+      color: #0f172a;
+      background: #ffffff;
+    }
+
+    button {
+      border: none;
+      cursor: pointer;
+      border-radius: 14px;
+      padding: 0 22px;
+      font-size: 16px;
+      font-weight: 700;
+      color: #0f3c68;
+      background: #ffffff;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+    }
+
+    .note {
+      margin-top: 14px;
+      color: rgba(255,255,255,0.72);
+      font-size: 14px;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 38px;
+      max-width: 700px;
+    }
+
+    .feature {
+      padding: 18px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.18);
+      color: rgba(255,255,255,0.9);
+      font-size: 15px;
+      line-height: 1.35;
+    }
+
+    .video-card {
+      padding: 14px;
+      border-radius: 32px;
+      background: rgba(255,255,255,0.16);
+      border: 1px solid rgba(255,255,255,0.24);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.24);
+      backdrop-filter: blur(18px);
+    }
+
+    .video-frame {
+      position: relative;
+      overflow: hidden;
+      border-radius: 24px;
+      aspect-ratio: 9 / 16;
+      background: #0f172a;
+      max-height: 620px;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .video-caption {
+      padding: 16px 6px 2px;
+      color: rgba(255,255,255,0.78);
+      font-size: 14px;
+      text-align: center;
+    }
+
+    footer {
+      margin-top: 72px;
+      color: rgba(255,255,255,0.65);
+      font-size: 14px;
+      text-align: center;
+    }
+
+    @media (max-width: 880px) {
+      header {
+        margin-bottom: 48px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .features {
+        grid-template-columns: 1fr;
+      }
+
+      .waitlist-card {
+        flex-direction: column;
+      }
+
+      button {
+        padding: 16px;
+      }
+
+      .video-card {
+        max-width: 420px;
+        margin: 0 auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <header>
+      <div class="brand">
+        <img src="/texashomeschool_logo.png" alt="Texas Homeschool Tool logo" />
+        <span>Texas Homeschool Tool</span>
+      </div>
+
+      <div class="badge">Built for Texas homeschool families</div>
+    </header>
+
+    <section class="hero">
+      <div>
+        <h1>Homeschool planning without the overwhelm.</h1>
+
+        <p class="lead">
+          Texas Homeschool Tool helps parents organize lessons, records,
+          schedules, goals, and resources in one calm, simple place.
+        </p>
+
+        <form class="waitlist-card" action="#" method="post">
+          <input
+            type="email"
+            name="email"
+            placeholder="Enter your email for early access"
+            required
+          />
+          <button type="submit">Join Waitlist</button>
+        </form>
+
+        <p class="note">
+          Early access is coming soon. No spam — just launch updates and helpful homeschool planning tips.
+        </p>
+
+        <div class="features">
+          <div class="feature">Plan your homeschool week without juggling five notebooks.</div>
+          <div class="feature">Keep records, goals, and progress organized in one place.</div>
+          <div class="feature">Designed to feel simple, calm, and parent-friendly.</div>
+        </div>
+      </div>
+
+      <aside class="video-card">
+        <div class="video-frame">
+          <iframe
+            src="https://www.youtube.com/embed/EERqJGyGa9c"
+            title="Texas Homeschool Tool video"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <p class="video-caption">A quick look at the idea behind the tool.</p>
+      </aside>
+    </section>
+
+    <footer>
+      © 2026 Texas Homeschool Tool. All rights reserved.
+    </footer>
+  </main>
+</body>
+</html>
