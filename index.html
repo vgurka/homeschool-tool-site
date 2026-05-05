@@ -5,7 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Texas Homeschool Tool</title>
 
+  <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Inter:wght@400;500;600;700;800&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
+
   <style>
+    :root {
+      --background: #EDEBF5;
+      --foreground: #1F1F2E;
+      --card: #E5E1F0;
+      --primary: #4F46D9;
+      --primary-foreground: #FFFFFF;
+      --secondary: #DCD7EA;
+      --muted: #E3DFEC;
+      --muted-foreground: #6E6885;
+      --accent: #34C77F;
+      --destructive: #DC2A2A;
+      --border: #D6D1E2;
+      --warning: #F5A623;
+      --course-1: #4F46D9;
+      --course-2: #34C77F;
+      --course-3: #9B4DCC;
+      --course-4: #F5A623;
+      --course-5: #D94177;
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -13,51 +35,59 @@
     }
 
     body {
-      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: #ffffff;
+      font-family: Inter, system-ui, -apple-system, sans-serif;
+      color: var(--foreground);
       background:
-        radial-gradient(circle at top left, rgba(96, 165, 250, 0.45), transparent 35%),
-        linear-gradient(135deg, #0f3c68 0%, #1262a3 45%, #38bdf8 100%);
+        radial-gradient(circle at top left, rgba(52, 199, 127, 0.28), transparent 32%),
+        linear-gradient(180deg, #000066 0%, #6666FF 100%);
       min-height: 100vh;
     }
 
     .page {
-      width: min(1120px, 92%);
+      width: min(1160px, 92%);
       margin: 0 auto;
-      padding: 32px 0 56px;
+      padding: 30px 0 56px;
     }
 
     header {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      margin-bottom: 72px;
+      align-items: center;
+      margin-bottom: 64px;
+      color: white;
     }
 
     .brand {
       display: flex;
       align-items: center;
       gap: 14px;
-      font-weight: 700;
-      letter-spacing: -0.02em;
+      font-weight: 800;
     }
 
     .brand img {
-      width: 54px;
-      height: 54px;
+      width: 56px;
+      height: 56px;
       object-fit: contain;
-      border-radius: 14px;
-      background: rgba(255,255,255,0.12);
+      border-radius: 16px;
+      background: rgba(255,255,255,0.14);
       padding: 6px;
+      border: 1px solid rgba(255,255,255,0.24);
+    }
+
+    .brand span {
+      font-family: "Black Ops One", Inter, sans-serif;
+      font-size: clamp(18px, 2vw, 26px);
+      letter-spacing: 0.02em;
     }
 
     .badge {
-      padding: 8px 14px;
-      border: 1px solid rgba(255,255,255,0.25);
+      padding: 9px 15px;
       border-radius: 999px;
-      background: rgba(255,255,255,0.12);
-      backdrop-filter: blur(12px);
+      color: white;
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.25);
       font-size: 14px;
+      font-weight: 700;
     }
 
     .hero {
@@ -67,64 +97,106 @@
       align-items: center;
     }
 
-    h1 {
-      font-size: clamp(42px, 7vw, 76px);
-      line-height: 0.95;
-      letter-spacing: -0.07em;
-      margin-bottom: 24px;
+    .hero-copy {
+      color: white;
     }
 
-    .lead {
-      font-size: clamp(18px, 2vw, 22px);
-      line-height: 1.55;
-      color: rgba(255,255,255,0.86);
-      max-width: 620px;
-      margin-bottom: 30px;
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 20px;
+      padding: 8px 13px;
+      border-radius: 999px;
+      background: rgba(52,199,127,0.18);
+      border: 1px solid rgba(52,199,127,0.45);
+      color: #dfffee;
+      font-weight: 800;
+      font-size: 14px;
     }
+
+ h1 {
+  font-family: "Black Ops One", Inter, sans-serif;
+  font-size: clamp(32px, 5vw, 52px);
+  line-height: 1.05;
+  letter-spacing: 0.01em;
+  margin-bottom: 20px;
+  max-width: 700px;
+}
+
+   .lead {
+  font-size: clamp(16px, 1.6vw, 20px);
+}
 
     .waitlist-card {
-      display: flex;
+      max-width: 610px;
+      padding: 12px;
+      border-radius: 26px;
+      background: rgba(237,235,245,0.96);
+      border: 1px solid rgba(255,255,255,0.35);
+      box-shadow: 0 28px 70px rgba(0,0,0,0.24);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       gap: 10px;
-      max-width: 560px;
-      padding: 8px;
-      background: rgba(255,255,255,0.14);
-      border: 1px solid rgba(255,255,255,0.24);
-      border-radius: 20px;
-      backdrop-filter: blur(14px);
-      box-shadow: 0 24px 60px rgba(0,0,0,0.18);
+      margin-bottom: 10px;
     }
 
     input {
-      flex: 1;
-      border: none;
+      width: 100%;
+      border: 1px solid var(--border);
       outline: none;
-      border-radius: 14px;
-      padding: 16px 18px;
+      border-radius: 16px;
+      padding: 16px 17px;
       font-size: 16px;
-      color: #0f172a;
-      background: #ffffff;
+      color: var(--foreground);
+      background: white;
+      font-family: Inter, system-ui, sans-serif;
+    }
+
+    input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(79,70,217,0.16);
     }
 
     button {
+      width: 100%;
       border: none;
       cursor: pointer;
-      border-radius: 14px;
-      padding: 0 22px;
-      font-size: 16px;
-      font-weight: 700;
-      color: #0f3c68;
-      background: #ffffff;
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      border-radius: 16px;
+      padding: 16px 22px;
+      font-size: 17px;
+      font-weight: 900;
+      color: var(--primary-foreground);
+      background: var(--primary);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
     }
 
     button:hover {
       transform: translateY(-1px);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+      box-shadow: 0 14px 34px rgba(79,70,217,0.34);
+      background: #4338ca;
+    }
+
+    button:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .message {
+      margin-top: 10px;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--muted-foreground);
+      min-height: 20px;
     }
 
     .note {
       margin-top: 14px;
-      color: rgba(255,255,255,0.72);
+      color: rgba(255,255,255,0.76);
       font-size: 14px;
     }
 
@@ -132,64 +204,105 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 14px;
-      margin-top: 38px;
-      max-width: 700px;
+      margin-top: 36px;
+      max-width: 760px;
     }
 
     .feature {
       padding: 18px;
-      border-radius: 22px;
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.18);
-      color: rgba(255,255,255,0.9);
-      font-size: 15px;
-      line-height: 1.35;
+      border-radius: 24px;
+      background: rgba(229,225,240,0.95);
+      border: 1px solid rgba(255,255,255,0.34);
+      color: var(--foreground);
+      box-shadow: 0 14px 35px rgba(0,0,0,0.12);
     }
+
+    .feature strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 15px;
+    }
+
+    .feature p {
+      font-size: 14px;
+      line-height: 1.4;
+      color: var(--muted-foreground);
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+    }
+
+    .course-1 { background: var(--course-1); }
+    .course-2 { background: var(--course-2); }
+    .course-3 { background: var(--course-3); }
 
     .video-card {
       padding: 14px;
-      border-radius: 32px;
-      background: rgba(255,255,255,0.16);
-      border: 1px solid rgba(255,255,255,0.24);
-      box-shadow: 0 30px 80px rgba(0,0,0,0.24);
-      backdrop-filter: blur(18px);
+      border-radius: 34px;
+      background: rgba(237,235,245,0.92);
+      border: 1px solid rgba(255,255,255,0.42);
+      box-shadow: 0 34px 90px rgba(0,0,0,0.26);
     }
 
     .video-frame {
-      position: relative;
       overflow: hidden;
-      border-radius: 24px;
+      border-radius: 26px;
       aspect-ratio: 9 / 16;
-      background: #0f172a;
-      max-height: 620px;
+      background: #1F1F2E;
+      max-height: 640px;
     }
 
     iframe {
       width: 100%;
       height: 100%;
       border: 0;
+      display: block;
     }
 
     .video-caption {
-      padding: 16px 6px 2px;
-      color: rgba(255,255,255,0.78);
-      font-size: 14px;
+      padding: 16px 8px 4px;
       text-align: center;
+      color: var(--muted-foreground);
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .script-note {
+      font-family: Kalam, Inter, sans-serif;
+      color: var(--accent);
+      font-size: 19px;
+      font-weight: 700;
     }
 
     footer {
-      margin-top: 72px;
-      color: rgba(255,255,255,0.65);
+      margin-top: 76px;
+      color: rgba(255,255,255,0.68);
       font-size: 14px;
       text-align: center;
     }
 
     @media (max-width: 880px) {
       header {
-        margin-bottom: 48px;
+        align-items: flex-start;
+        gap: 18px;
+        flex-direction: column;
+        margin-bottom: 42px;
       }
 
       .hero {
+        grid-template-columns: 1fr;
+        gap: 42px;
+      }
+
+      h1 {
+        font-size: clamp(40px, 13vw, 62px);
+      }
+
+      .form-row {
         grid-template-columns: 1fr;
       }
 
@@ -197,16 +310,8 @@
         grid-template-columns: 1fr;
       }
 
-      .waitlist-card {
-        flex-direction: column;
-      }
-
-      button {
-        padding: 16px;
-      }
-
       .video-card {
-        max-width: 420px;
+        max-width: 430px;
         margin: 0 auto;
       }
     }
@@ -225,32 +330,62 @@
     </header>
 
     <section class="hero">
-      <div>
-        <h1>Homeschool planning without the overwhelm.</h1>
+      <div class="hero-copy">
+        <div class="eyebrow">Early access opening soon</div>
+
+        <h1>Stop juggling homeschool chaos.</h1>
 
         <p class="lead">
-          Texas Homeschool Tool helps parents organize lessons, records,
-          schedules, goals, and resources in one calm, simple place.
+          Texas Homeschool Tool gives parents one place to track courses,
+  monitor progress, organize records, and support student learning.
         </p>
 
-        <form class="waitlist-card" action="#" method="post">
-          <input
-            type="email"
-            name="email"
-            placeholder="Enter your email for early access"
-            required
-          />
-          <button type="submit">Join Waitlist</button>
+        <form id="waitlistForm" class="waitlist-card">
+          <div class="form-row">
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Your name"
+              autocomplete="name"
+            />
+
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Your email"
+              autocomplete="email"
+              required
+            />
+          </div>
+
+          <button id="submitButton" type="submit">Get Early Access</button>
+          <div class="message" id="message"></div>
         </form>
 
         <p class="note">
-          Early access is coming soon. No spam — just launch updates and helpful homeschool planning tips.
+          You'll be invited to first access when the tool is ready.
         </p>
 
         <div class="features">
-          <div class="feature">Plan your homeschool week without juggling five notebooks.</div>
-          <div class="feature">Keep records, goals, and progress organized in one place.</div>
-          <div class="feature">Designed to feel simple, calm, and parent-friendly.</div>
+          <div class="feature">
+            <div class="dot course-1"></div>
+            <strong>Faster Planning</strong>
+            <p>Replace scattered notebooks, spreadsheets, and sticky notes with one simple homeschool planner.</p>
+          </div>
+
+          <div class="feature">
+            <div class="dot course-2"></div>
+            <strong>Track what matters</strong>
+            <p>Keep lessons, goals, progress, and records organized without making homeschool feel corporate.</p>
+          </div>
+
+          <div class="feature">
+            <div class="dot course-3"></div>
+            <strong>Built for real parents</strong>
+            <p>A clean, intuitive tool designed around busy homeschool families.</p>
+          </div>
         </div>
       </div>
 
@@ -263,7 +398,11 @@
             allowfullscreen>
           </iframe>
         </div>
-        <p class="video-caption">A quick look at the idea behind the tool.</p>
+
+        <p class="video-caption">
+          <span class="script-note">A quick peek</span><br />
+          See the idea behind a simpler way to organize homeschool life.
+        </p>
       </aside>
     </section>
 
@@ -271,5 +410,57 @@
       © 2026 Texas Homeschool Tool. All rights reserved.
     </footer>
   </main>
+
+  <script>
+    const form = document.getElementById("waitlistForm");
+    const message = document.getElementById("message");
+    const submitButton = document.getElementById("submitButton");
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+
+      if (!email) {
+        message.style.color = "#DC2A2A";
+        message.textContent = "Please enter your email address.";
+        return;
+      }
+
+      submitButton.disabled = true;
+      submitButton.textContent = "Joining...";
+      message.style.color = "#6E6885";
+      message.textContent = "Submitting your request...";
+
+      try {
+        const response = await fetch("https://kqcupdesesbiuffrdaes.supabase.co/functions/v1/submit-interest", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "apikey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtxY3VwZGVzZXNiaXVmZnJkYWVzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU2ODY4NTUsImV4cCI6MjA5MTI2Mjg1NX0.tyTeMItHOGnTwrK2YhMsWFUYE8z5PMHyy7Yk0Sp-THI"
+          },
+          body: JSON.stringify({
+            email: email,
+            name: name || "Optional Name"
+          })
+        });
+
+        if (!response.ok) {
+          throw new Error("Submission failed");
+        }
+
+        message.style.color = "#34C77F";
+        message.textContent = "You’re on the list! We’ll be in touch soon.";
+        form.reset();
+      } catch (error) {
+        message.style.color = "#DC2A2A";
+        message.textContent = "Something went wrong. Please try again.";
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = "Get Early Access";
+      }
+    });
+  </script>
 </body>
 </html>
