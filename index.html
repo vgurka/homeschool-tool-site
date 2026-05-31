@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Texas Homeschool Tool</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Inter:wght@400;500;600;700;800&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Inter:wght@400;500;600;700;800;900&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -51,8 +51,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 54px;
-      color: white;
+      margin-bottom: 44px;
     }
 
     .brand img {
@@ -64,203 +63,39 @@
       backdrop-filter: blur(6px);
     }
 
-    .badge {
-      padding: 9px 15px;
-      border-radius: 999px;
-      color: white;
-      background: rgba(255,255,255,0.14);
-      border: 1px solid rgba(255,255,255,0.25);
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    .hero {
-      display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: 56px;
-      align-items: center;
-    }
-
-    .hero-copy {
-      color: white;
-    }
-
-    h1 {
-      font-family: "Black Ops One", Inter, sans-serif;
-      font-size: clamp(32px, 5vw, 52px);
-      line-height: 1.05;
-      letter-spacing: 0.01em;
-      margin-bottom: 20px;
-      max-width: 700px;
-    }
-
-    .lead {
-      max-width: 700px;
-      font-size: clamp(16px, 1.6vw, 20px);
-      line-height: 1.6;
-      color: rgba(255,255,255,0.9);
-      margin-bottom: 18px;
-    }
-
-    .hero-list {
-      max-width: 700px;
-      padding-left: 24px;
-      margin: 16px 0 26px;
-      color: rgba(255,255,255,0.9);
-      line-height: 1.55;
-    }
-
-    .hero-list li {
-      margin-bottom: 8px;
-    }
-
-    .cta-button {
+    .special-button,
+    .cta-button,
+    .bottom-button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       text-decoration: none;
-      padding: 16px 30px;
       border-radius: 18px;
-      background: var(--primary);
+      font-weight: 900;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    }
+
+    .special-button {
+      padding: 13px 18px;
       color: white;
-      font-weight: 900;
-      font-size: 17px;
-      box-shadow: 0 14px 34px rgba(0,0,0,0.22);
-      transition: transform 0.15s ease, background 0.15s ease;
-    }
-
-    .cta-button:hover {
-      transform: translateY(-1px);
-      background: #4338ca;
-    }
-
-    .offer-card {
-      max-width: 760px;
-      margin-top: 34px;
-      padding: 30px;
-      border-radius: 30px;
-      background: rgba(237,235,245,0.96);
-      color: var(--foreground);
-      box-shadow: 0 28px 70px rgba(0,0,0,0.24);
-    }
-
-    .offer-badge {
-      display: inline-block;
-      margin-bottom: 14px;
-      padding: 8px 14px;
-      border-radius: 999px;
-      background: rgba(52,199,127,0.16);
-      color: var(--accent);
-      font-weight: 800;
-      font-size: 13px;
-    }
-
-    .offer-card h2 {
-      font-size: clamp(24px, 3.5vw, 34px);
-      margin-bottom: 12px;
-      color: var(--foreground);
-    }
-
-    .offer-text {
-      line-height: 1.6;
-      color: var(--muted-foreground);
-      margin-bottom: 24px;
-    }
-
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-    }
-
-    .price-box {
-      padding: 22px;
-      border-radius: 22px;
-      background: white;
-      border: 1px solid var(--border);
-    }
-
-    .price-box.featured {
-      border: 2px solid var(--primary);
-    }
-
-    .price-label {
-      font-size: 14px;
-      font-weight: 800;
-      color: var(--muted-foreground);
-      margin-bottom: 10px;
-    }
-
-    .original-price {
-      text-decoration: line-through;
-      color: var(--muted-foreground);
-      margin-bottom: 6px;
-      opacity: 0.75;
-    }
-
-    .price {
-      font-size: clamp(30px, 4vw, 42px);
-      font-weight: 900;
-      color: var(--primary);
-    }
-
-    .price span {
-      font-size: 16px;
-      color: var(--muted-foreground);
-    }
-
-    .save-note {
-      margin-top: 8px;
-      color: var(--accent);
-      font-weight: 800;
-      font-size: 14px;
-    }
-
-    .offer-note {
-      margin-top: 18px;
-      color: var(--muted-foreground);
-      font-size: 14px;
-    }
-
-    .features {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      margin-top: 36px;
-      max-width: 760px;
-    }
-
-    .feature {
-      padding: 18px;
-      border-radius: 24px;
-      background: rgba(229,225,240,0.95);
-      border: 1px solid rgba(255,255,255,0.34);
-      color: var(--foreground);
-      box-shadow: 0 14px 35px rgba(0,0,0,0.12);
-    }
-
-    .feature strong {
-      display: block;
-      margin-bottom: 6px;
+      background: var(--accent);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.2);
       font-size: 15px;
+      white-space: nowrap;
     }
 
-    .feature p {
-      font-size: 14px;
-      line-height: 1.4;
-      color: var(--muted-foreground);
+    .special-button:hover,
+    .cta-button:hover,
+    .bottom-button:hover {
+      transform: translateY(-1px);
     }
 
-    .dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 999px;
-      margin-bottom: 12px;
+    .hero {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 56px;
+      align-items: center;
     }
-
-    .course-1 { background: var(--course-1); }
-    .course-2 { background: var(--course-2); }
-    .course-3 { background: var(--course-3); }
 
     .video-card {
       padding: 14px;
@@ -300,8 +135,152 @@
       font-weight: 700;
     }
 
+    .hero-copy {
+      color: white;
+    }
+
+    h1 {
+      font-family: "Black Ops One", Inter, sans-serif;
+      font-size: clamp(32px, 5vw, 52px);
+      line-height: 1.05;
+      letter-spacing: 0.01em;
+      margin-bottom: 20px;
+      max-width: 700px;
+    }
+
+    .lead {
+      max-width: 700px;
+      font-size: clamp(16px, 1.6vw, 20px);
+      line-height: 1.6;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 18px;
+    }
+
+    .cta-button {
+      margin: 8px 0 30px;
+      padding: 16px 32px;
+      background: var(--primary);
+      color: white;
+      font-size: 18px;
+      box-shadow: 0 14px 34px rgba(0,0,0,0.22);
+    }
+
+    .cta-button:hover,
+    .bottom-button:hover {
+      background: #4338ca;
+    }
+
+    .info-card {
+      max-width: 760px;
+      padding: 30px;
+      border-radius: 30px;
+      background: rgba(237,235,245,0.96);
+      color: var(--foreground);
+      box-shadow: 0 28px 70px rgba(0,0,0,0.24);
+    }
+
+    .info-card h2 {
+      font-size: clamp(24px, 3.5vw, 34px);
+      margin-bottom: 12px;
+      color: var(--foreground);
+    }
+
+    .info-card p {
+      line-height: 1.6;
+      color: var(--muted-foreground);
+      margin-bottom: 16px;
+    }
+
+    .hero-list {
+      padding-left: 24px;
+      color: var(--foreground);
+      line-height: 1.55;
+      margin-top: 14px;
+    }
+
+    .hero-list li {
+      margin-bottom: 8px;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 26px;
+      max-width: 760px;
+    }
+
+    .feature {
+      padding: 18px;
+      border-radius: 24px;
+      background: rgba(229,225,240,0.95);
+      border: 1px solid rgba(255,255,255,0.34);
+      color: var(--foreground);
+      box-shadow: 0 14px 35px rgba(0,0,0,0.12);
+    }
+
+    .feature strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 15px;
+    }
+
+    .feature p {
+      font-size: 14px;
+      line-height: 1.4;
+      color: var(--muted-foreground);
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+    }
+
+    .course-1 { background: var(--course-1); }
+    .course-2 { background: var(--course-2); }
+    .course-3 { background: var(--course-3); }
+
+    .bottom-cta {
+      margin-top: 56px;
+      padding: 36px;
+      border-radius: 32px;
+      text-align: center;
+      background: rgba(237,235,245,0.96);
+      box-shadow: 0 28px 70px rgba(0,0,0,0.22);
+    }
+
+    .bottom-cta h2 {
+      font-size: clamp(26px, 4vw, 40px);
+      margin-bottom: 12px;
+      color: var(--foreground);
+    }
+
+    .bottom-cta p {
+      max-width: 680px;
+      margin: 0 auto 22px;
+      line-height: 1.6;
+      color: var(--muted-foreground);
+    }
+
+    .bottom-button {
+      padding: 16px 32px;
+      background: var(--primary);
+      color: white;
+      font-size: 18px;
+      box-shadow: 0 14px 34px rgba(79,70,217,0.24);
+    }
+
+    .footer-note {
+      margin-top: 18px;
+      font-size: 13px;
+      color: var(--muted-foreground);
+      opacity: 0.85;
+    }
+
     footer {
-      margin-top: 76px;
+      margin-top: 60px;
       color: rgba(255,255,255,0.68);
       font-size: 14px;
       text-align: center;
@@ -312,29 +291,34 @@
         align-items: flex-start;
         gap: 18px;
         flex-direction: column;
-        margin-bottom: 42px;
+        margin-bottom: 36px;
       }
 
       .hero {
         grid-template-columns: 1fr;
-        gap: 42px;
+        gap: 36px;
+      }
+
+      .video-card {
+        max-width: 430px;
+        margin: 0 auto;
+        order: 1;
+      }
+
+      .hero-copy {
+        order: 2;
       }
 
       h1 {
         font-size: clamp(32px, 10vw, 48px);
       }
 
-      .features,
-      .pricing-grid {
+      .features {
         grid-template-columns: 1fr;
       }
 
-      .video-card {
-        max-width: 430px;
-        margin: 0 auto;
-      }
-
-      .offer-card {
+      .info-card,
+      .bottom-cta {
         padding: 24px;
       }
     }
@@ -345,82 +329,15 @@
   <main class="page">
     <header>
       <div class="brand">
-        <img src="/images/texashomeschool_logo2.png" alt="Texas Homeschool Tool logo" />
+        <img src="https://texashomeschooltool/images/texashomeschool_logo2.png" alt="Texas Homeschool Tool logo" />
       </div>
 
-      <div class="badge">Built for Texas homeschool families</div>
+      <a class="special-button" href="https://homeschooltool.lovable.app" target="_blank" rel="noopener noreferrer">
+        Summer Special 70% Off
+      </a>
     </header>
 
     <section class="hero">
-      <div class="hero-copy">
-        <h1>Stop juggling homeschool chaos.</h1>
-
-        <p class="lead">
-          Texas Homeschool Tool gives parents one place to track courses,
-          monitor progress, organize records, and support student learning.
-        </p>
-
-        <ul class="hero-list">
-          <li>Track coursework, attendance, and academic progress in one place.</li>
-          <li>Keep homeschool records organized and easy to access anytime.</li>
-          <li>Parents and students can manage assignments, updates, and progress directly from their phones.</li>
-        </ul>
-
-        <a class="cta-button" href="https://homeschooltool.lovable.app" target="_blank" rel="noopener noreferrer">
-          Try the App
-        </a>
-
-        <section class="offer-card">
-          <div class="offer-badge">Founding Family Pricing — 70% Off</div>
-
-          <h2>Simple pricing for homeschool families.</h2>
-
-          <p class="offer-text">
-            Get full access to Texas Homeschool Tool with special launch pricing for early families.
-          </p>
-
-          <div class="pricing-grid">
-            <div class="price-box">
-              <div class="price-label">Monthly Plan</div>
-              <div class="original-price">$49.99/month</div>
-              <div class="price">$14.99<span>/month</span></div>
-              <div class="save-note">70% off launch pricing</div>
-            </div>
-
-            <div class="price-box featured">
-              <div class="price-label">Annual Plan</div>
-              <div class="original-price">$499.99/year</div>
-              <div class="price">$149.99<span>/year</span></div>
-              <div class="save-note">Best value for families</div>
-            </div>
-          </div>
-
-          <p class="offer-note">
-            Founding family pricing is available for early users. Cancel anytime.
-          </p>
-        </section>
-
-        <div class="features">
-          <div class="feature">
-            <div class="dot course-1"></div>
-            <strong>Faster Planning</strong>
-            <p>Replace scattered notebooks, spreadsheets, and sticky notes with one simple homeschool planner.</p>
-          </div>
-
-          <div class="feature">
-            <div class="dot course-2"></div>
-            <strong>Track What Matters</strong>
-            <p>Keep lessons, goals, progress, and records organized without making homeschool feel corporate.</p>
-          </div>
-
-          <div class="feature">
-            <div class="dot course-3"></div>
-            <strong>Built for Real Parents</strong>
-            <p>A clean, intuitive tool designed around busy homeschool families.</p>
-          </div>
-        </div>
-      </div>
-
       <aside class="video-card">
         <div class="video-frame">
           <iframe
@@ -436,10 +353,71 @@
           See the idea behind a simpler way to organize homeschool life.
         </p>
       </aside>
+
+      <div class="hero-copy">
+        <h1>Stop juggling homeschool chaos.</h1>
+
+        <a class="cta-button" href="https://homeschooltool.lovable.app" target="_blank" rel="noopener noreferrer">
+          Try the App
+        </a>
+
+        <section class="info-card">
+          <h2>One calm place to manage homeschool life.</h2>
+
+          <p>
+            Texas Homeschool Tool gives parents one place to track courses,
+            monitor progress, organize records, and support student learning.
+          </p>
+
+          <ul class="hero-list">
+            <li>Track coursework, attendance, and academic progress in one place.</li>
+            <li>Keep homeschool records organized and easy to access anytime.</li>
+            <li>Parents and students can manage assignments, updates, and progress directly from their phones.</li>
+          </ul>
+        </section>
+
+        <div class="features">
+          <div class="feature">
+            <div class="dot course-1"></div>
+            <strong>Faster Planning</strong>
+            <p>Replace scattered notebooks, spreadsheets, and sticky notes with one simple homeschool planner.</p>
+          </div>
+
+          <div class="feature">
+            <div class="dot course-2"></div>
+            <strong>Track What Matters</strong>
+            <p>Keep courses, goals, progress, and records organized without making homeschool feel corporate.</p>
+          </div>
+
+          <div class="feature">
+            <div class="dot course-3"></div>
+            <strong>Built for Real Parents</strong>
+            <p>A clean, intuitive tool designed around busy homeschool families.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bottom-cta">
+      <h2>Ready to simplify homeschool planning?</h2>
+
+      <p>
+        Try Texas Homeschool Tool today and see how much easier it can be to organize courses,
+        progress, records, and learning in one place.
+      </p>
+
+      <a class="bottom-button" href="https://homeschooltool.lovable.app" target="_blank" rel="noopener noreferrer">
+        Try the App
+      </a>
+
+     
     </section>
 
     <footer>
       © 2026 Texas Homeschool Tool. All rights reserved.
+       <div class="footer-note">
+        Texas Homeschool Tool is a product of Mosaic Leadership Group, LLC
+      </div>
     </footer>
   </main>
 </body>
